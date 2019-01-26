@@ -1,7 +1,9 @@
 package com.javathon.team.JavaThon.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +15,10 @@ import javax.persistence.Table;
 @Data
 @NoArgsConstructor
 public class AuditEvent {
+
+    public AuditEvent(Long userId) {
+        this.userId = userId;
+    }
 
     @Id
     private Long id;

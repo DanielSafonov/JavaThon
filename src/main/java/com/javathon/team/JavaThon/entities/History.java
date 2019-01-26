@@ -3,22 +3,27 @@ package com.javathon.team.JavaThon.entities;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "audit_event_data")
+@Table(name = "history")
 @Data
 @NoArgsConstructor
-public class AuditEventData {
+public class History {
+
+    public History(String key,
+                   String value) {
+        this.key = key;
+        this.value = value;
+    }
 
     @Id
     private Long id;
 
-    @Column(name = "audit_event_id")
-    private Long auditEventId;
+//    @Column(name = "audit_event_id")
+//    private Long auditEventId;
 
     private String key;
 

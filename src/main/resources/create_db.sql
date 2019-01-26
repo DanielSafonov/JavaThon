@@ -44,22 +44,22 @@ create table if not exists javathon.javathon_schema.PARTICIPANT(
 create index idx_participants_team_id on javathon.javathon_schema.PARTICIPANT (team_id);
 create index idx_participants_user_id on javathon.javathon_schema.PARTICIPANT (user_id);
 
-create table if not exists javathon_schema.audit_event(
-  id bigserial,
-  user_id bigint,
+-- create table if not exists javathon_schema.audit_event(
+--   id bigserial,
+--   user_id bigint,
+--
+--   constraint pk_audit_event_id primary key (id),
+--   constraint fk_audit_event_user_id foreign key (user_id) references javathon_schema."user" (id)
+-- );
+-- create index idx_audit_event_user_id on javathon_schema."user" (id);
 
-  constraint pk_audit_event_id primary key (id),
-  constraint fk_audit_event_user_id foreign key (user_id) references javathon_schema."user" (id)
-);
-create index idx_audit_event_user_id on javathon_schema."user" (id);
-
-create table if not exists javathon_schema.audit_event_data(
+create table if not exists javathon_schema.history(
   id bigserial,
-  audit_event_id bigint,
+--   audit_event_id bigint,
   key varchar,
   value varchar,
 
-  constraint pk_audit_event_data primary key (id),
-  constraint fk_audit_event_data foreign key (audit_event_id) references javathon_schema.audit_event (id)
+  constraint pk_audit_event_data primary key (id)
+--   constraint fk_audit_event_data foreign key (audit_event_id) references javathon_schema.audit_event (id)
 );
-create index idx_audit_event_data_event_id on javathon_schema.audit_event_data (audit_event_id)
+-- create index idx_audit_event_data_event_id on javathon_schema.audit_event_data (audit_event_id)
