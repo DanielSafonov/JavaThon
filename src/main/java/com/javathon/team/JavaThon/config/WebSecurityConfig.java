@@ -1,4 +1,4 @@
-package com.javathon.team.JavaThon.Config;
+package com.javathon.team.JavaThon.config;
 
 import com.javathon.team.JavaThon.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
