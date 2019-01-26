@@ -6,7 +6,9 @@ spring:
   jpa:
     generate-ddl: true
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
-enab
+  mustache:
+    expose-request-attributes: true
 server:
   port: 8081
+
 
