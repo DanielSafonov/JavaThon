@@ -7,12 +7,22 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="PARTICIPANTS")
-public class Participants {
+public class Participant {
     @Id
+    @Column(name="ID")
+    private long id;
     @Column(name="TEAM_ID")
     private long teamId;
     @Column(name="USER_ID")
     private long userId;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public long getTeamId() {
         return teamId;
