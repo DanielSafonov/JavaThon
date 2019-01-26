@@ -1,6 +1,6 @@
 package com.javathon.team.JavaThon.config;
 
-import com.javathon.team.JavaThon.service.UserService;
+import com.javathon.team.JavaThon.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 @EnableWebSecurity //Включить и сконфигурировать Web Security
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired //Автосвязывание класса-конфигурации с сервисом пользователей
-    private UserService userService;
+    private UsersService usersService;
 
     @Override  //Переопределение метода конфигурации доступа к ресурсам
     protected void configure(HttpSecurity http) throws Exception {
@@ -39,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override //Переопределение метода концигурации аутентификации и работы с БД
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(userService)
+        auth.userDetailsService(usersService)
                 .passwordEncoder(NoOpPasswordEncoder.getInstance());
         //Доступ через UserService
     }
