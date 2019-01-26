@@ -10,9 +10,11 @@ create table if not exists javathon.javathon_schema.USERS (
 );
 
 create table if not exists javathon.javathon_schema.PARTICIPANTS(
+  ID bigserial,
   TEAM_ID BIGINT,
   USER_ID BIGINT,
 
+  constraint pk_participants primary key (ID),
   CONSTRAINT fk_participants_team_id FOREIGN KEY (TEAM_ID) references javathon.javathon_schema.TEAMS (TEAM_ID),
   constraint fk_participants_user_id foreign key (USER_ID) references javathon.javathon_schema.USERS (USER_ID)
 );
