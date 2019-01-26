@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "history")
+@Table(name = "history", schema = "javathon_schema")
 @Data
 @NoArgsConstructor
 public class History {
@@ -21,9 +21,6 @@ public class History {
 
     @Id
     private Long id;
-
-//    @Column(name = "audit_event_id")
-//    private Long auditEventId;
 
     private String key;
 
