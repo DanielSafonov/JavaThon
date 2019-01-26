@@ -1,1 +1,2 @@
-# JacaThone
+# JavaThon
+
