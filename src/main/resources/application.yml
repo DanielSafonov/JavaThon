@@ -1,12 +1,15 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost/postgres
+    url: jdbc:postgresql://localhost:5432/javathon
     username: postgres
-    password: 1771885
+    password: postgres
   jpa:
     generate-ddl: true
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
-
+  mustache:
+    expose-request-attributes: true
 
 server:
   port: 8081
+
+
