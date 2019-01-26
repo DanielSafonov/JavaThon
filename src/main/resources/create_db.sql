@@ -1,4 +1,4 @@
-create table if not exists javathon_schema.USERS (
+create table if not exists javathon.javathon_schema."user" (
   ID bigserial,
   FIRST_NAME varchar,
   LAST_NAME VARCHAR,
@@ -9,7 +9,7 @@ create table if not exists javathon_schema.USERS (
   UNIQUE (PHONE_NUMBER)
 );
 
-create table if not exists javathon_schema.HACKATONS(
+create table if not exists javathon.javathon_schema.HACKATON (
   ID BIGSERIAL,
   NAME VARCHAR,
   START_TIME TIMESTAMP,
@@ -19,26 +19,26 @@ create table if not exists javathon_schema.HACKATONS(
   CONSTRAINT pk_hackatons_id PRIMARY KEY (ID)
 );
 
-CREATE TABLE IF NOT EXISTS javathon_schema.TEAMS (
+CREATE TABLE IF NOT EXISTS javathon.javathon_schema.TEAM (
   ID BIGSERIAL,
   NAME VARCHAR,
   HACKATONE_ID BIGINT,
 
   CONSTRAINT pk_teams_id PRIMARY KEY (ID),
   UNIQUE (NAME),
-  constraint fk_teams_hackatone_id foreign key (HACKATONE_ID) references javathon_schema.HACKATONS
+  constraint fk_teams_hackatone_id foreign key (HACKATONE_ID) references javathon.javathon_schema.HACKATON
 );
-CREATE INDEX idx_teams_hackatone_id on javathon.javathon_schema.TEAMS (HACKATONE_ID);
-create index idx_teams_name on javathon.javathon_schema.TEAMS (NAME);
+CREATE INDEX idx_teams_hackatone_id on javathon.javathon_schema.TEAM (HACKATONE_ID);
+create index idx_teams_name on javathon.javathon_schema.TEAM (NAME);
 
-create table if not exists javathon_schema.PARTICIPANTS(
+create table if not exists javathon.javathon_schema.PARTICIPANT(
   ID bigserial,
   TEAM_ID BIGINT,
   USER_ID BIGINT,
 
   constraint pk_participants primary key (ID),
-  CONSTRAINT fk_participants_team_id FOREIGN KEY (TEAM_ID) references javathon_schema.TEAMS (ID),
-  constraint fk_participants_user_id foreign key (USER_ID) references javathon_schema.USERS (ID)
+  CONSTRAINT fk_participants_team_id FOREIGN KEY (TEAM_ID) references javathon.javathon_schema.TEAM (ID),
+  constraint fk_participants_user_id foreign key (USER_ID) references javathon.javathon_schema."user" (ID)
 );
-create index idx_participants_team_id on javathon_schema.PARTICIPANTS (TEAM_ID);
-create index idx_participants_user_id on javathon_schema.PARTICIPANTS (USER_ID);
+create index idx_participants_team_id on javathon.javathon_schema.PARTICIPANT (TEAM_ID);
+create index idx_participants_user_id on javathon.javathon_schema.PARTICIPANT (USER_ID);
