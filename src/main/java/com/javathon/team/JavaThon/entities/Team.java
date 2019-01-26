@@ -1,26 +1,26 @@
 package com.javathon.team.JavaThon.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="TEAMS")
+@NoArgsConstructor
 public class Team {
     @Id
-    @Column(name="ID")
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(name="NAME")
     private String name;
     @Column(name="HACKATHON_ID")
     private String hackathonId;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,20 +1,34 @@
 package com.javathon.team.JavaThon.services;
 
+import com.javathon.team.JavaThon.entities.User;
 import com.javathon.team.JavaThon.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
-public class UsersService implements UserDetailsService {
+public class UserService  {
 
     @Autowired
-    private UserRepository usersRepo;
+    private UserRepository userRepository;
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return usersRepo.findByPhoneNumber(username);
+
+    public User getUser(Long id) {
+        return userRepository.findByid(id);
     }
+
+    public void addUser(User user) {
+        userRepository.save(user);
+    }
+
+    public void updateUser(User user) {
+        userRepository.save(user);
+    }
+
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
+
 }
