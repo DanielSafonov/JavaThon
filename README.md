@@ -1,15 +1,24 @@
 # JavaThon
 
+---
 git fetch --all
+
 <Пишем код>
+
 git push -u origin master
 
-git chekout -b <branchname>
-<Пишем код>
-git push origin <branchname>
+----
 
+git chekout -b <branchname>
+  
+<Пишем код>
+
+git push origin <branchname>
+  
+---
 
 ## Задание:
 
+???
 
-_Обещали 210кг еды_
+
