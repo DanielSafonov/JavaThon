@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/javathon
+    username: postgres
+    password: postgres
+  jpa:
+    generate-ddl: true
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+
+
+server:
+  port: 8081
+
