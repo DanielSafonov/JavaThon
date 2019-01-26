@@ -1,18 +1,16 @@
 # JavaThon
+### Срочно:
+???
 
 ---
-git pull
-
-<Пишем код>
-
+git pull<br/>
+<Пишем код><br/>
 git push -u origin master
 
 ----
 
-git chekout -b <branchname>
-  
-<Пишем код>
-
+git chekout -b <branchname><br/>
+<Пишем код><br/>
 git push origin <branchname>
   
 ---
