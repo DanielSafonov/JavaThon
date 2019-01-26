@@ -14,10 +14,10 @@
     {{/message}}
     <form action="/registration" method="post">
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-        <input type="tel" name="username" placeholder="Номер телефона">
-        <input type="text" name="firstname" placeholder="Имя">
-        <input type="text" name="lasthame" placeholder="Фамилия">
-        <input type="email" name="email" placeholder="Email">
+        <input type="tel" name="userName" placeholder="Номер телефона">
+        <input type="text" name="firstName" placeholder="Имя">
+        <input type="text" name="phoneNumber" placeholder="phoneNumber">
+        <input type="text" name="lastName" placeholder="Фамилия">
         <input type="password" name="password" placeholder="Пароль"> <br/>
         <button type="submit">Зарегистрироваться</button>
     </form>
