@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS javathon.javathon_schema.TEAM (
 
   CONSTRAINT pk_teams_id PRIMARY KEY (ID),
   UNIQUE (NAME),
-  constraint fk_teams_hackatone_id foreign key (hackatone_id) references javathon.javathon_schema.hachaton
+  constraint fk_teams_hackatone_id foreign key (hackatone_id) references javathon.javathon_schema.hachaton on update cascade on delete cascade
 );
 CREATE INDEX idx_teams_hackatone_id on javathon.javathon_schema.TEAM (hackatone_id);
 create index idx_teams_name on javathon.javathon_schema.TEAM (name);
@@ -38,28 +38,28 @@ create table if not exists javathon.javathon_schema.PARTICIPANT(
   user_id BIGINT,
 
   constraint pk_participants primary key (ID),
-  CONSTRAINT fk_participants_team_id FOREIGN KEY (team_id) references javathon.javathon_schema.TEAM (id),
-  constraint fk_participants_user_id foreign key (user_id) references javathon.javathon_schema."user" (id)
+  CONSTRAINT fk_participants_team_id FOREIGN KEY (team_id) references javathon.javathon_schema.TEAM (id) on update cascade on delete cascade ,
+  constraint fk_participants_user_id foreign key (user_id) references javathon.javathon_schema."user" (id) on update cascade on delete cascade
 );
 create index idx_participants_team_id on javathon.javathon_schema.PARTICIPANT (team_id);
 create index idx_participants_user_id on javathon.javathon_schema.PARTICIPANT (user_id);
 
-create table if not exists javathon_schema.audit_event(
-  id bigserial,
-  user_id bigint,
+-- create table if not exists javathon_schema.audit_event(
+--   id bigserial,
+--   user_id bigint,
+--
+--   constraint pk_audit_event_id primary key (id),
+--   constraint fk_audit_event_user_id foreign key (user_id) references javathon_schema."user" (id)
+-- );
+-- create index idx_audit_event_user_id on javathon_schema."user" (id);
 
-  constraint pk_audit_event_id primary key (id),
-  constraint fk_audit_event_user_id foreign key (user_id) references javathon_schema."user" (id)
-);
-create index idx_audit_event_user_id on javathon_schema."user" (id);
-
-create table if not exists javathon_schema.audit_event_data(
+create table if not exists javathon_schema.history(
   id bigserial,
-  audit_event_id bigint,
+--   audit_event_id bigint,
   key varchar,
   value varchar,
 
-  constraint pk_audit_event_data primary key (id),
-  constraint fk_audit_event_data foreign key (audit_event_id) references javathon_schema.audit_event (id)
+  constraint pk_audit_event_data primary key (id)
+--   constraint fk_audit_event_data foreign key (audit_event_id) references javathon_schema.audit_event (id)
 );
-create index idx_audit_event_data_event_id on javathon_schema.audit_event_data (audit_event_id)
+-- create index idx_audit_event_data_event_id on javathon_schema.audit_event_data (audit_event_id)
