@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a href="#">Я участник</a>
+    <a :href="createLinkByName('userMainPage')">Я участник</a>
     <br><a href="#">Я организтор</a>
   </div>
 </template>
@@ -11,6 +11,11 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods: {
+    createLinkByName (name) {
+      return 'http://localhost:8080/#/' + name
     }
   }
 }
