@@ -1,7 +1,7 @@
 # JavaThon
 
 ---
-git fetch --all
+git pull
 
 <Пишем код>
 
