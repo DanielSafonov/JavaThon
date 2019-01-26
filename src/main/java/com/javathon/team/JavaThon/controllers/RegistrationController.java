@@ -1,8 +1,8 @@
 package com.javathon.team.JavaThon.controllers;
 
-import com.javathon.team.JavaThon.entities.Users;
 import com.javathon.team.JavaThon.entities.User;
 import com.javathon.team.JavaThon.repositories.UserRepository;
+import com.javathon.team.JavaThon.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +13,16 @@ import java.util.Map;
 
 @Controller //Контроллер регистрации нового пользователя
 public class RegistrationController {
-    @Autowired
+
     private UserRepository userRepository;
+    private UsersService userService;
+
+    @Autowired
+    public RegistrationController(UserRepository userRepository,
+                                  UsersService usersService) {
+        this.userRepository = userRepository;
+        this.userService = usersService;
+    }
 
     @GetMapping("/registration") //Обработка GET запросов на адрес /registration вызовом метода registration()
     public String registration(Model model){
@@ -38,4 +46,19 @@ public class RegistrationController {
 
         return "redirect:/login"; //Редирект на страницу авторизации
     }
+
+    @GetMapping("/login")
+    public String loginController() {
+        return "login";
+    }
+
+//    @PostMapping("/login")
+//    public String loginController(Map rq) {
+//
+//        if("".equals(userService.getUserByPhoneNumber(rq.get("phoneNumber").toString())) ) {
+//            rq.put("message", )
+//        }
+//
+//        return "login";
+//    }
 }

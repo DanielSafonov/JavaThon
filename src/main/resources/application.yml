@@ -1,13 +1,12 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/javathon?currentSchema=javathon_schema
+    url: jdbc:postgresql://localhost:5432/javathon
     username: postgres
     password: postgres
 
   jpa:
     generate-ddl: false
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
-#    properties.hibernate.dialect: org.hibernate.dialect.PostgreSQL96Dialect
     properties.hibernate.default_schema: javathon_schema
   mustache:
     expose-request-attributes: true
