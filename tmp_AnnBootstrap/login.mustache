@@ -14,7 +14,7 @@
     {{/message}}
     <form action="/login" method="post">
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-        <input type="text" name="phone_number" placeholder="Логин">
+        <input type="text" name="username" placeholder="Логин">
         <input type="password" name="password" placeholder="Пароль"> <br/>
         <button type="submit">Войти</button>
     </form>
