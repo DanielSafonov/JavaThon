@@ -6,12 +6,14 @@ import javax.persistence.*;
 @Table(name="PARTICIPANTS")
 public class Participant {
     @Id
-    @Column(name="ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name="TEAM_ID")
-    private long teamId;
-    @Column(name="USER_ID")
-    private long userId;
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
+    @ManyToOne
+    @JoinColumn(name = "USER_ID")
+    private User user;
 
     public long getId() {
         return id;
@@ -21,19 +23,19 @@ public class Participant {
         this.id = id;
     }
 
-    public long getTeamId() {
-        return teamId;
+    public Team getTeam() {
+        return team;
     }
 
-    public void setTeamId(long teamId) {
-        this.teamId = teamId;
+    public void setTeam(Team team) {
+        this.team = team;
     }
 
-    public long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
