@@ -7,8 +7,8 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name="USER")
-public class User implements UserDetails {
+@Table(name="USERS")
+public class Users implements UserDetails {
     @Id
     @Column(name="ID")
     private long id;

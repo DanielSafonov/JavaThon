@@ -4,11 +4,12 @@ spring:
     username: postgres
     password: postgres
   jpa:
-    generate-ddl: true
+    generate-ddl: false
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.PostgreSQL96Dialect
+    properties.hibernate.default_schema: javathon_schema
   mustache:
     expose-request-attributes: true
 server:
   port: 8081
-
 

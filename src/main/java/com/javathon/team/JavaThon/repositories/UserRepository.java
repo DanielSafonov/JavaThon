@@ -1,8 +1,8 @@
 package com.javathon.team.JavaThon.repositories;
 
-import com.javathon.team.JavaThon.entities.User;
+import com.javathon.team.JavaThon.entities.Users;
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository  extends CrudRepository<User, Long> {
-    public User findByPhoneNumber(String phoneNumber);
+public interface UserRepository  extends CrudRepository<Users, Long> {
+    public Users findByPhoneNumber(String phoneNumber);
 }

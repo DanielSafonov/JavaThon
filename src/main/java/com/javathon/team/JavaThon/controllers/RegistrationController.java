@@ -1,6 +1,6 @@
 package com.javathon.team.JavaThon.controllers;
 
-import com.javathon.team.JavaThon.entities.User;
+import com.javathon.team.JavaThon.entities.Users;
 import com.javathon.team.JavaThon.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,9 +21,9 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration") //Обработка POST запроса на /registration
-    public String addUser(User user, Map<String, Object> model){
+    public String addUser(Users user, Map<String, Object> model){
         //Поиск такого phoneNumber в базе (phoneNumber уже занят)
-        User userFromDb = userRepository.findByPhoneNumber(user.getPhoneNumber());
+        Users userFromDb = userRepository.findByPhoneNumber(user.getPhoneNumber());
 
         //Проверка phoneNumber
         if(userFromDb != null){

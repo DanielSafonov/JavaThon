@@ -5,10 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name="HACKATHON")
+@Table(name="HACKATHONS")
 public class Hackathon {
 
     @Id
