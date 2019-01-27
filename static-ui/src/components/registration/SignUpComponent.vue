@@ -1,46 +1,21 @@
 <template>
-  <div class="container">
-    <div class="col-lg-12 well">
-      <h1 class="well">Регистрация</h1>
-      <div class="row">
-        <form @submit.prevent="onSubmit">
-          <!--<input type="hidden" name="_csrf" value="{{_csrf.token}}" />-->
+  <form class="form-signin" @submit.prevent="signUp">
+    <img class="logo mb-4" src="logo.png" alt="">
+    <h1 class="h2 mb-3 font-weight-normal">Регистрация</h1>
 
-          <div class="col-sm-12" >
-            <div class="row">
-              <div class="col-sm-6 form-group">
-                <label>Имя</label>
-                <input type="text" v-model="firstName" placeholder="Введите имя" class="form-control" name="firstname">
-              </div>
-              <div class="col-sm-6 form-group">
-                <label>Фамилия</label>
-                <input type="text" v-model="lastName" placeholder="Введите фамилию" class="form-control" name="lasthame">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label>Номер телефона</label>
-              <input type="tel" v-model="phoneNumber" placeholder="Введите номер телефона" class="form-control" name="username">
-            </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="text" v-model="email" placeholder="Введите email" class="form-control" name="email">
-            </div>
-            <div class="form-group">
-              <label>Пароль</label>
-              <input type="password" v-model="password" placeholder="Введите пароль" class="form-control" name="password">
-            </div>
-            <button type="button" class="btn btn-lg btn-info">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+    <input type="tel" name="phoneNumber" v-model="phoneNumber" class="form-control" placeholder="Номер телефона" required autofocus>
+    <input type="text" name="firstName" v-model="firstName" class="form-control" placeholder="Имя" required autofocus>
+    <input type="text" name="lastName" v-model="lastName" class="form-control" placeholder="Фамилия" required autofocus>
+    <input type="text" name="email" v-model="email" class="form-control" placeholder="Email" required autofocus>
+    <input type="password" name="password" v-model="password" class="form-control" placeholder="Пароль" required>
+    <button class="btn btn-lg btn-secondary btn-block mb-4" type="submit">Регистрация</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
+  </form>
 </template>
 
 <script>
 export default {
-  name: 'SignInComponent',
+  name: 'SignUpComponent',
   data () {
     return {
       phoneNumber: '',
@@ -51,8 +26,9 @@ export default {
     }
   },
   methods: {
-    onSubmit () {
-      this.axios.post('/registration', {
+    signUp () {
+      console.log('requesting')
+      this.axios.post('http://localhost:8081/registration', {
         phoneNumber: this.phoneNumber,
         firstName: this.firstName,
         lastName: this.lastName,
@@ -67,5 +43,59 @@ export default {
 </script>
 
 <style scoped>
-
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+  }
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+  }
+  .form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+  }
+  .form-signin .checkbox {
+    font-weight: 400;
+  }
+  .form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .form-signin .form-control:focus {
+    z-index: 2;
+  }
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .logo{
+    max-width: 200px;
+    height: auto;
+  }
 </style>

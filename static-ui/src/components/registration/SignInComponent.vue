@@ -1,26 +1,16 @@
 <template>
-  <div class="container">
-    <h1 class="well">Авторизация</h1>
-    <div class="col-lg-12 well">
-      <div class="row">
-        <form @submit.prevent="onSubmit">
-          <!--<input type="hidden" name="_csrf" value="{{_csrf.token}}" />-->
-          <div class="col-sm-12" >
-            <div class="row">
-              <div class="col-sm-6 form-group">
-                <label>Логин</label>
-                <input type="text" v-model="username" placeholder="Введите логин"  class="form-control" name="username">
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Пароль</label>
-              <input type="password" v-model="password" placeholder="Введите пароль" class="form-control">
-            </div>
-            <button type="button" class="btn btn-lg btn-info">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
+  <div>
+    <form class="form-signin" @submit.prevent="signIn">
+      <img class="logo mb-4" src="logo.png" alt="">
+      <h1 class="h2 mb-3 font-weight-normal">Вход</h1>
+
+      <input type="tel" name="phoneNumber" v-model="phoneNumber" class="form-control" placeholder="Номер телефона" required autofocus>
+
+      <input type="password" name="password" v-model="password" class="form-control" placeholder="Пароль" required>
+      <button class="btn btn-lg btn-secondary btn-block mb-4" type="submit">Вход</button>
+      <a href="http://localhost:8080/#/signup" class="py-4">Регистрация</a>
+      <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
+    </form>
   </div>
 </template>
 
@@ -34,8 +24,9 @@ export default {
     }
   },
   methods: {
-    onSubmit () {
-      this.axios.post('/login', {
+    signIn () {
+      console.log('requesting')
+      this.axios.post('http://localhost:8081/api/auth', {
         phoneNumber: this.phoneNumber,
         password: this.password
       }).then((response) => {
@@ -47,5 +38,59 @@ export default {
 </script>
 
 <style scoped>
-
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+  }
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+  }
+  .form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+  }
+  .form-signin .checkbox {
+    font-weight: 400;
+  }
+  .form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .form-signin .form-control:focus {
+    z-index: 2;
+  }
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .logo{
+    max-width: 200px;
+    height: auto;
+  }
 </style>

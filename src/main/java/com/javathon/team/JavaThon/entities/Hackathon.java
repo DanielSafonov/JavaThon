@@ -1,16 +1,14 @@
 package com.javathon.team.JavaThon.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name="hackatons", schema = "javathon_schema")
-@Data
 @NoArgsConstructor
+@Data
 public class Hackathon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +19,12 @@ public class Hackathon {
     private Timestamp startTime;
     @Column(name="end_time")
     private Timestamp endTime;
+    @Column(name="description")
+    private String description;
     @Column(name="participants_limit")
     private Integer participantsLimit;
+    @Column(name="image_url")
+    private String imageUrl;
+
+
 }
