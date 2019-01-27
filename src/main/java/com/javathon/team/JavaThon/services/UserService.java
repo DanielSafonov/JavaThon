@@ -32,7 +32,7 @@ public class UserService  {
     }
 
     public boolean auth(User user) {
-        return "".equals(userRepository.findByPhoneNumberAndPassword(user.getPhoneNumber(), user.getPassword()).toString());
+        return userRepository.findByPhoneNumberAndPassword(user.getPhoneNumber(), user.getPassword()) != null;
     }
 
 }

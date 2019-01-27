@@ -7,12 +7,12 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name="hackatons", schema = "javathon_schema")
-@NoArgsConstructor
 @Data
+@NoArgsConstructor
 public class Hackathon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name="name")
     private String name;
     @Column(name="start_time")

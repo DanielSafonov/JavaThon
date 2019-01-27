@@ -36,17 +36,4 @@ public class UserController {
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
-
-    @PostMapping("/auth")
-    public ResponseEntity auth(@RequestBody User rq) {
-
-        if(userService.auth(rq))
-            return ResponseEntity
-                    .status(HttpStatus.OK)
-                    .build();
-        else
-            return ResponseEntity
-                    .status(HttpStatus.BAD_REQUEST)
-                    .build();
-    }
 }
