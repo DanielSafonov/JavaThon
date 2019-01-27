@@ -5,9 +5,6 @@ import com.javathon.team.JavaThon.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class UserService  {
 
@@ -16,7 +13,7 @@ public class UserService  {
 
 
     public User getUser(Long id) {
-        return userRepository.findByid(id);
+        return userRepository.findById(id).isPresent() ? userRepository.getOne(id): null;
     }
 
     public void addUser(User user) {

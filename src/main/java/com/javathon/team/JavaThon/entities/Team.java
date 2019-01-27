@@ -1,5 +1,6 @@
 package com.javathon.team.JavaThon.entities;
 
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -14,7 +15,7 @@ public class Team {
     @Column(name="NAME")
     private String name;
     @Column(name="HACKATHON_ID")
-    private String hackathonId;
+    private Long hackathonId;
 
     public Long getId() {
         return id;
@@ -32,11 +33,11 @@ public class Team {
         this.name = name;
     }
 
-    public String getHackathonId() {
+    public Long getHackathonId() {
         return hackathonId;
     }
 
-    public void setHackathonId(String hackathonId) {
+    public void setHackathonId(Long hackathonId) {
         this.hackathonId = hackathonId;
     }
 }
