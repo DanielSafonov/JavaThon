@@ -5,8 +5,6 @@ import com.javathon.team.JavaThon.entities.Team;
 import com.javathon.team.JavaThon.repositories.HackathonRepository;
 import com.javathon.team.JavaThon.repositories.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,10 +18,8 @@ public class HackathonService {
     private TeamRepository teamRepository;
 
 
-    public List<Hackathon> getAll() {
-        List<Hackathon> hackathons = new ArrayList<>();
-        hackathonRepository.findAll().forEach(hackathons::add);
-        return hackathons;
+    public List<Hackathon> getHackathons() {
+        return hackathonRepository.findAll();
     }
 
     public void addHackathon(Hackathon hackathon) {
@@ -35,21 +31,16 @@ public class HackathonService {
     }
 
     public Hackathon getHackathon(Long id) {
-        if(hackathonRepository.findById(id).isPresent()) {
-            return hackathonRepository.findById(id).get();
-        } else {
-            return null;
-        }
+        return hackathonRepository.findById(id).isPresent() ? hackathonRepository.findById(id).get(): null;
     }
 
     public void deleteHackathon(Long id) {
         hackathonRepository.deleteById(id);
     }
 
+
     public List<Team> getTeamsForHackathon(Long hackathonId) {
-        List<Team> teams = new ArrayList<>();
-        teamRepository.findAllByHackathonId(hackathonId).forEach(teams::add);
-        return teams;
+        return teamRepository.findAllByHackathonId(hackathonId);
     }
 
     public void addTeamForHackathon(Team team) {
