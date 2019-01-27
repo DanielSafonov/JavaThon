@@ -2,7 +2,6 @@ package com.javathon.team.JavaThon.controllers;
 
 import com.javathon.team.JavaThon.entities.Hackathon;
 import com.javathon.team.JavaThon.entities.Team;
-import com.javathon.team.JavaThon.entities.User;
 import com.javathon.team.JavaThon.services.HackathonService;
 import com.javathon.team.JavaThon.services.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;

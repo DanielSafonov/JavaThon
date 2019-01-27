@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="PARTICIPANTS")
-@Data
 @NoArgsConstructor
 public class Participant {
     @Id
@@ -19,4 +18,28 @@ public class Participant {
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
