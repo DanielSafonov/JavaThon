@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService  {
 
-    @Autowired
     private UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
 
     public User getUser(Long id) {
@@ -26,6 +29,10 @@ public class UserService  {
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
+    }
+
+    public boolean auth(User user) {
+        return "".equals(userRepository.findByPhoneNumberAndPassword(user.getPhoneNumber(), user.getPassword()).toString());
     }
 
 }

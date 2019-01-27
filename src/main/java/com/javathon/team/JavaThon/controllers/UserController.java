@@ -3,13 +3,19 @@ package com.javathon.team.JavaThon.controllers;
 import com.javathon.team.JavaThon.entities.User;
 import com.javathon.team.JavaThon.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/api")
 @RestController
 public class UserController {
-    @Autowired
+
     private UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
     public User getUser(@PathVariable Long id) {
@@ -29,5 +35,18 @@ public class UserController {
     @RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
+    }
+
+    @PostMapping("/auth")
+    public ResponseEntity auth(@RequestBody User rq) {
+
+        if(userService.auth(rq))
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .build();
+        else
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .build();
     }
 }

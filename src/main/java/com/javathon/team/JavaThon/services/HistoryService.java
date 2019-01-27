@@ -2,7 +2,6 @@ package com.javathon.team.JavaThon.services;
 
 import com.javathon.team.JavaThon.entities.History;
 import com.javathon.team.JavaThon.repositories.HistoryRepository;
-import com.javathon.team.JavaThon.repositories.AuditEventRepository;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +15,10 @@ import java.util.stream.Collectors;
 @Data
 public class HistoryService<T> {
 
-    private AuditEventRepository auditEventRepository;
     private HistoryRepository historyRepository;
 
-    public HistoryService(AuditEventRepository auditEventRepository,
-                          HistoryRepository historyRepository) {
+    public HistoryService(HistoryRepository historyRepository) {
         this.historyRepository = historyRepository;
-        this.auditEventRepository = auditEventRepository;
     }
 
     /**

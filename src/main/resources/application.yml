@@ -5,7 +5,7 @@ spring:
     password: postgres
 
   jpa:
-    generate-ddl: true
+#    generate-ddl: true
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
     properties.hibernate.default_schema: javathon_schema
   mustache:

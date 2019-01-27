@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name="hackatons", schema = "javathon_schema")
+@Data
 @NoArgsConstructor
 public class Hackathon {
     @Id
@@ -22,44 +23,4 @@ public class Hackathon {
     private Timestamp endTime;
     @Column(name="participants_limit")
     private Integer participantsLimit;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Timestamp getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Timestamp startTime) {
-        this.startTime = startTime;
-    }
-
-    public Timestamp getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Timestamp endTime) {
-        this.endTime = endTime;
-    }
-
-    public Integer getParticipantsLimit() {
-        return participantsLimit;
-    }
-
-    public void setParticipantsLimit(Integer participantsLimit) {
-        this.participantsLimit = participantsLimit;
-    }
 }
