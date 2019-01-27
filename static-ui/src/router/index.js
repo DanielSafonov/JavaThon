@@ -5,6 +5,7 @@ import MainPageComponent from '@/components/MainPageComponent'
 import HackCardComponent from '@/components/HackCardComponent'
 import SignInComponent from '@/components/registration/SignInComponent'
 import SignUpComponent from '@/components/registration/SignUpComponent'
+import UserProfileComponent from '@/components/UserProfileComponent'
 import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(Router)
@@ -35,6 +36,11 @@ export default new Router({
       path: '/hackCard',
       name: 'hackCard',
       component: HackCardComponent
+    },
+    {
+      path: '/userProfile',
+      name: 'userProfile',
+      component: UserProfileComponent
     }
   ]
 })
